@@ -50,7 +50,7 @@ const Register = () => {
             createUserWithEmailAndPassword(email, password);
         }
     return (
-        <div className="mx-auto mt-8 card w-1/3 bg-base-100 shadow-xl">
+        <div className="mx-auto mt-8 card lg:w-1/3 sm:w-full bg-base-100 shadow-xl">
             <div className="card-body">
                 <h2 className="text-3xl font-semibold text-center mb-4">Nucleus of PC Login <FontAwesomeIcon icon={faDoorClosed}></FontAwesomeIcon></h2>
                 <form onSubmit={handleRegister}>
