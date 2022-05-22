@@ -1,15 +1,39 @@
-import { faComputer } from '@fortawesome/free-solid-svg-icons';
+import { faComputer, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+    const handleLogout = () => {
+        signOut(auth);
+    }
+    console.log(user);
     const menuItems =
         <>
             <li tabIndex="0"><Link to='/home'>Home</Link></li>
             <li tabIndex="1"><Link to='/blogs'>Blogs</Link></li>
-            <li tabIndex="2"><Link to='/login'>Login</Link></li>
             <li tabIndex="3"><Link to='/register'>Register</Link></li>
+            <li>
+                {
+                    user ?
+                        <li onClick={handleLogout}>Logout</li>
+                        :
+                        <li><Link to='/login'>Login</Link></li>
+                }
+            </li>
+
+            <li className='items-center'>
+                {
+                    user ?
+                        <div class="badge badge-secondary"><FontAwesomeIcon icon={faUser}></FontAwesomeIcon> {user.displayName || user.email}</div>
+                        :
+                        <div class="badge badge-secondary"><FontAwesomeIcon icon={faUser}></FontAwesomeIcon> No user logged in</div>
+                }
+            </li>
         </>
     return (
         <div className="navbar bg-[#03203C] text-yellow-50">
@@ -22,7 +46,7 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl"><FontAwesomeIcon icon={faComputer} className="mr-4"/> Nucleus of PC</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl"><FontAwesomeIcon icon={faComputer} className="mr-4" /> Nucleus of PC</Link>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0 bg-[#03203C]">
@@ -30,7 +54,7 @@ const Header = () => {
                 </ul>
             </div>
         </div>
-        
+
     );
 };
 

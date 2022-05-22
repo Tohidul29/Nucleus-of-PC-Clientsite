@@ -24,7 +24,7 @@ const SocialLogin = () => {
     }
     return (
         <div>
-            <button onClick={() => signInWithGoogle()} className="btn btn-dark text-white">Google Login <img src={googleLogo} width={30} height={30} alt="icon" /></button>
+            <button onClick={() => signInWithGoogle()} className="btn btn-accent text-white">Google Login <img src={googleLogo} width={30} height={30} alt="icon" /></button>
         </div>
     );
 };
