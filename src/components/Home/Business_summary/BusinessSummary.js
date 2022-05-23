@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../../img/Person/elon.jpg'
 
-const Business_summary = () => {
+const BusinessSummary = () => {
     return (
         <div>
         <h1 className='text-3xl font-bold text-center text-[#03203C]'>Nucleus of PC Business Summary 2022</h1>
@@ -42,4 +42,4 @@ const Business_summary = () => {
     );
 };
 
-export default Business_summary;
+export default BusinessSummary;
