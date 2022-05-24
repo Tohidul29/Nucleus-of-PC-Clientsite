@@ -1,7 +1,7 @@
 import { faDoorClosed } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useRef } from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import auth from '../../firebase.init';
@@ -9,46 +9,51 @@ import Loading from '../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
-        const [
-            createUserWithEmailAndPassword,
-            user,
-            loading,
-            error,
-        ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-    
-        let errorMsg;
-    
-        if (error) {
-            errorMsg = <div className='text-[red] mt-2'>
-                <p>Error: {error.message}</p>
-            </div>
-        }
-    
-        const navigate = useNavigate();
-        const navigateLogin = event => {
-            navigate('/login');
-        }
-    
-        if (user) {
-            navigate('/home');
-        }
-    
-        const fullNameRef = useRef('');
-        const emailRef = useRef('');
-        const passwordRef = useRef('');
-    
-        if (loading) {
-            return <Loading></Loading>
-        }
-    
-        const handleRegister = event => {
-            event.preventDefault();
-            const fullName = fullNameRef.current.value;
-            const email = emailRef.current.value;
-            const password = passwordRef.current.value;
-    
-            createUserWithEmailAndPassword(email, password);
-        }
+    const [updateProfile, updating] = useUpdateProfile(auth);
+
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+
+
+    let errorMsg;
+
+    if (error) {
+        errorMsg = <div className='text-[red] mt-2'>
+            <p>Error: {error.message}</p>
+        </div>
+    }
+
+    const navigate = useNavigate();
+    const navigateLogin = event => {
+        navigate('/login');
+    }
+
+    if (user) {
+        navigate('/home');
+    }
+
+    const fullNameRef = useRef('');
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+
+    if (loading || updating) {
+        return <Loading></Loading>
+    }
+
+    const handleRegister = async (event) => {
+        event.preventDefault();
+        const displayName = fullNameRef.current.value;
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: displayName });
+    }
     return (
         <div className="mx-auto mt-8 card lg:w-1/3 sm:w-full bg-base-100 shadow-xl">
             <div className="card-body">
