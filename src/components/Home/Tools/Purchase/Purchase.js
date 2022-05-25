@@ -31,7 +31,6 @@ const Purchase = () => {
     }, []);
 
     const onSubmit = data => {
-        // console.log(data)
         const name = tool.name;
         const price = (parseInt(tool.price))*(parseInt(data.quantity));
         const purchase = {
@@ -60,11 +59,6 @@ const Purchase = () => {
         setQuantity(inputValue);
     }
 
-    // const address = event.target.address.value
-
-
-
-
     let displayError = '';
     if (quantity < minimum_order_quantity) {
         displayError = <p className='text-[red]'>You must have to order {minimum_order_quantity} pieces</p>
@@ -74,16 +68,6 @@ const Purchase = () => {
     }
 
     const { name, img, description, price } = tool;
-
-    // const purchase = {
-    //         productName: name,
-    //         productPrice: price,
-    //         buyerName: userName,
-    //         buyerEmail: userEmail,
-    //         productQuantity: quantity,
-    //         buyerAddress: address,
-    //     }
-
 
     return (
         <div>
