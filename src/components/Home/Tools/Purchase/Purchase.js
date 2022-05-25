@@ -97,7 +97,7 @@ const Purchase = () => {
                             <input {...register("quantity")} type="number" name='quantity' onChange={quantityInput} className="input input-bordered w-full max-w-xs text-center font-semibold mb-3" />
                             {displayError}
 
-                            <input type="submit" value='Submit' className='btn btn-primary mt-4 block mx-auto' disabled={quantity < minimum_order_quantity || quantity > available_quantity}/>
+                            <input type="submit" value='Submit' className='btn btn-primary mt-4 block mx-auto text-white' disabled={quantity < minimum_order_quantity || quantity > available_quantity}/>
                         </form>
                     </div>
                 </div>

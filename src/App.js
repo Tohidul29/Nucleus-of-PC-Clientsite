@@ -7,6 +7,7 @@ import MyProfile from './components/Dashboard/MyProfile/MyProfile';
 import Home from './components/Home/Home/Home';
 import Purchase from './components/Home/Tools/Purchase/Purchase';
 import Login from './components/Login/Login';
+import MyPortfolio from './components/MyPortfolio/MyPortfolio';
 import NotFound from './components/NotFound/NotFound';
 import Register from './components/Register/Register';
 import RequireAuth from './components/RequireAuth/RequireAuth';
@@ -24,17 +25,17 @@ function App() {
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/dashboard' element={
           <RequireAuth>
-            <Dashboard>
-              <Route index element={<MyProfile></MyProfile>}></Route>
-              <Route path='addreview' element={<AddReview></AddReview>}></Route>
-              <Route path='myorder' element={<MyOrders></MyOrders>}></Route>
-            </Dashboard>
+            <Dashboard></Dashboard>
           </RequireAuth>
         }>
+          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path='addreview' element={<AddReview></AddReview>}></Route>
+          <Route path='myorder' element={<MyOrders></MyOrders>}></Route>
         </Route>
         <Route path='/purchase/:id' element={
           <RequireAuth><Purchase></Purchase></RequireAuth>
         }></Route>
+        <Route path='/myportfolio' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>

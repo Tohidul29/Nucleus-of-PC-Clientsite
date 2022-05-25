@@ -27,7 +27,7 @@ const Header = () => {
                         <li><Link to='/login'>Login</Link></li>
                 }
             </li>
-
+            <li><Link to='/myportfolio'>My Portfolio</Link></li>
             <li className='items-center'>
                 {
                     user ?
