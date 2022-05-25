@@ -6,6 +6,7 @@ import auth from '../../firebase.init';
 import googleLogo from '../../img/Social-icon/google.png';
 import Loading from '../Shared/Loading/Loading';
 import 'react-toastify/dist/ReactToastify.css';
+import useToken from '../../hooks/useToken';
 
 const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -15,7 +16,9 @@ const SocialLogin = () => {
         toast(error.message);
     }
 
-    if (user) {
+    const [token] = useToken(user);
+
+    if (token) {
         navigate('/home');
     }
 

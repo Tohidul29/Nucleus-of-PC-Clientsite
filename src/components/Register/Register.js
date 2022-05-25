@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
@@ -33,7 +34,9 @@ const Register = () => {
         navigate('/login');
     }
 
-    if (user) {
+    const [token] = useToken(user);
+
+    if (token) {
         navigate('/home');
     }
 

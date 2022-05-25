@@ -8,6 +8,7 @@ import Loading from '../Shared/Loading/Loading';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const [
@@ -21,14 +22,16 @@ const Login = () => {
         auth
     );
 
-
     const navigate = useNavigate();
 
     const navigateRegister = event => {
         navigate('/register');
     }
 
-    if(user){
+    
+    const [token] = useToken(user);
+
+    if(token){
         navigate('/home');
     }
 
