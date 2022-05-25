@@ -14,7 +14,7 @@ const MyPortfolio = () => {
             <div className="card-body items-center text-center">
                 <h2 className="card-title">Name: MD TOHIDUL ISLAM</h2>
                 <h2 className="card-title">Email Address: tohidswfu@gmail.com</h2>
-                <h4 className='text-xl'>Education: BSc in Computer Science and Technology (<FontAwesomeIcon icon={faUniversity}></FontAwesomeIcon> SWFU, China)</h4>
+                <h4 className='text-xl'>Education: BEng in Computer Science and Technology (<FontAwesomeIcon icon={faUniversity}></FontAwesomeIcon> SWFU, China)</h4>
                 <h2 className='text-2xl mt-6 mb-2'>My Projects</h2>
                 <div className="card-actions">
                     <a href='https://relaxed-yonath-0f6e13.netlify.app/' target='_blank' className='mr-4 hover:text-[yellow]'>Project 1</a>
