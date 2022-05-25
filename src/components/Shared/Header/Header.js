@@ -22,7 +22,7 @@ const Header = () => {
             <li>
                 {
                     user ?
-                        <li onClick={handleLogout}>Logout</li>
+                        <li className='text-secondary' onClick={handleLogout}>Logout</li>
                         :
                         <li><Link to='/login'>Login</Link></li>
                 }
@@ -50,10 +50,15 @@ const Header = () => {
                 </div>
                 <Link to='/' className="btn btn-ghost normal-case text-xl"><FontAwesomeIcon icon={faComputer} className="mr-4" /> Nucleus of PC</Link>
             </div>
-            <div className="navbar-end hidden lg:flex">
+            <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0 bg-[#03203C]">
                     {menuItems}
                 </ul>
+            </div>
+            <div className="navbar-end">
+                <label for="dashboard-sidebar" tabIndex="1" className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLineCap="round" strokeLineJoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
             </div>
         </div>
 
