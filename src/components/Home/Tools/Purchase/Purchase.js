@@ -33,7 +33,7 @@ const Purchase = () => {
     const onSubmit = data => {
         // console.log(data)
         const name = tool.name;
-        const price = tool.price;
+        const price = (parseInt(tool.price))*(parseInt(data.quantity));
         const purchase = {
             productName: name,
             productCost: price,
