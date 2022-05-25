@@ -5,6 +5,8 @@ import auth from '../../../../firebase.init';
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Purchase = () => {
     const { id } = useParams();
@@ -28,12 +30,40 @@ const Purchase = () => {
             .then(data => setTool(data))
     }, []);
 
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        // console.log(data)
+        const name = tool.name;
+        const price = tool.price;
+        const purchase = {
+            productName: name,
+            productCost: price,
+            buyerEmail: data.email,
+            buyerName: data.name,
+            buyerAddress: data.address,
+            productQuantity: data.quantity
+        }
+        fetch('http://localhost:5000/purchase', {
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(purchase)
+        })
+        .then(res => res.json)
+        .then(data => {
+            toast('order placed successfully');
+        })
+    };
 
     const quantityInput = event => {
         const inputValue = event.target.value;
         setQuantity(inputValue);
     }
+
+    // const address = event.target.address.value
+
+
+
 
     let displayError = '';
     if (quantity < minimum_order_quantity) {
@@ -44,6 +74,16 @@ const Purchase = () => {
     }
 
     const { name, img, description, price } = tool;
+
+    // const purchase = {
+    //         productName: name,
+    //         productPrice: price,
+    //         buyerName: userName,
+    //         buyerEmail: userEmail,
+    //         productQuantity: quantity,
+    //         buyerAddress: address,
+    //     }
+
 
     return (
         <div>
@@ -99,6 +139,7 @@ const Purchase = () => {
 
                             <input type="submit" value='Submit' className='btn btn-primary mt-4 block mx-auto text-white' disabled={quantity < minimum_order_quantity || quantity > available_quantity}/>
                         </form>
+                        <ToastContainer></ToastContainer>
                     </div>
                 </div>
             </div>
