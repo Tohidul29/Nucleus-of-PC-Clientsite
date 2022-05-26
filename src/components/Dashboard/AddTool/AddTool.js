@@ -1,11 +1,30 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AddTool = () => {
-    const { register, handleSubmit} = useForm();
+    const { register, handleSubmit } = useForm();
 
     const onSubmit = data => {
-        console.log(data)
+        const product = {
+            name: data.name,
+            img: data.img,
+            description: data.description,
+            price: parseInt(data.price),
+            minimum_order_quantity: parseInt(data.minimum_order_quantity),
+            available_quantity: parseInt(data.available_quantity)
+        }
+        fetch('http://localhost:5000/tools', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json)
+            .then(data => {
+                toast.success('order placed successfully');
+            })
     };
 
     return (
@@ -57,6 +76,7 @@ const AddTool = () => {
 
                     <input type="submit" value='Add' className='btn btn-primary mt-4 block mx-auto text-white' />
                 </form>
+                <ToastContainer></ToastContainer>
             </div>
         </div >
     );

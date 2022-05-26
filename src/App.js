@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import AllProducts from './components/AllProducts/AllProducts';
 import Blogs from './components/Blogs/Blogs';
 import AddReview from './components/Dashboard/AddReview/AddReview';
 import AddTool from './components/Dashboard/AddTool/AddTool';
@@ -26,6 +27,7 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/allproducts' element={<AllProducts></AllProducts>}></Route>
         <Route path='/dashboard' element={
           <RequireAuth>
             <Dashboard></Dashboard>
