@@ -24,7 +24,7 @@ const Purchase = () => {
     const minimum_order_quantity = tool.minimum_order_quantity;
 
     useEffect(() => {
-        const url = `http://localhost:5000/tools/${id}`;
+        const url = `https://enigmatic-sea-26065.herokuapp.com/tools/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setTool(data))
@@ -41,7 +41,7 @@ const Purchase = () => {
             buyerAddress: data.address,
             productQuantity: data.quantity
         }
-        fetch('http://localhost:5000/purchase', {
+        fetch('https://enigmatic-sea-26065.herokuapp.com/purchase', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'
