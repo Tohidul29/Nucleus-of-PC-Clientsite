@@ -11,6 +11,7 @@ import Login from './components/Login/Login';
 import MyPortfolio from './components/MyPortfolio/MyPortfolio';
 import NotFound from './components/NotFound/NotFound';
 import Register from './components/Register/Register';
+import RequireAdmin from './components/RequireAdmin/RequireAdmin';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import Header from './components/Shared/Header/Header';
 
@@ -32,7 +33,7 @@ function App() {
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='addreview' element={<AddReview></AddReview>}></Route>
           <Route path='myorder' element={<MyOrders></MyOrders>}></Route>
-          <Route path='allusers' element={<AllUsers></AllUsers>}></Route>
+          <Route path='allusers' element={<RequireAdmin><AllUsers></AllUsers></RequireAdmin>}></Route>
         </Route>
         <Route path='/purchase/:id' element={
           <RequireAuth><Purchase></Purchase></RequireAuth>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import UserRow from './UserRow';
 
 
 
@@ -6,11 +7,15 @@ const AllUsers = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/user')
+        fetch('http://localhost:5000/user', {
+            method: "GET",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setUsers(data))
     }, [])
-
 
     return (
         <div>
@@ -19,19 +24,18 @@ const AllUsers = () => {
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>Email</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            users.map((u, index) =>
-                                <tr key={u._id}>
-                                    <th>{index + 1}</th>
-                                    <td>{u.email}</td>
-                                </tr>)
+                            users.map(user => <UserRow
+                                key={user._id}
+                                user={user}
+                            ></UserRow>)
                         }
-
                     </tbody>
                 </table>
             </div>
