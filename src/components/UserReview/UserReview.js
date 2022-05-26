@@ -14,7 +14,7 @@ const UserReview = () => {
 
     return (
         <div>
-            <h2 className='text-center my-8 text-[#03203C] font-bold text-2xl'>Customers Review about Our Company <FontAwesomeIcon icon={faComment}></FontAwesomeIcon></h2>
+            <h2 className='text-center my-8 text-[#03203C] font-bold text-3xl'>Customers Review about Our Company <FontAwesomeIcon icon={faComment}></FontAwesomeIcon></h2>
             <div className='grid lg:grid-cols-3 gap-6 mx-auto sm:grid-cols-1 lg:mx-20 mb-20'>
                 {
                     data.map(review => <Review
