@@ -10,12 +10,12 @@ const Header = () => {
     const [user] = useAuthState(auth);
     const handleLogout = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken');
     }
     const menuItems =
         <>
             <li tabIndex="0"><Link to='/home'>Home</Link></li>
             <li tabIndex="1"><Link to='/blogs'>Blogs</Link></li>
-            <li tabIndex="3"><Link to='/register'>Register</Link></li>
             {
                 user && <li><Link to='/dashboard'>Dashboard</Link></li>
             }

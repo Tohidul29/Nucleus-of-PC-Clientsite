@@ -1,5 +1,7 @@
+import { signOut } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const MyOrders = () => {
@@ -7,11 +9,27 @@ const MyOrders = () => {
 
     const [pur, setPur] = useState([]);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/purchase?buyerEmail=${user.email}`)
-                .then(res => res.json())
-                .then(data => setPur(data))
+            fetch(`http://localhost:5000/purchase?buyerEmail=${user.email}`, {
+                method: 'GET',
+                headers:{
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+                .then(res => {
+                    console.log(res);
+                    if(res.status === 401 || res.status === 403){
+                        signOut(auth);
+                        localStorage.removeItem('accessToken');
+                        navigate('/');
+                    }
+                    return res.json()})
+                .then(data => {
+                    setPur(data)
+                });
         }
     }, [user])
 
@@ -33,7 +51,7 @@ const MyOrders = () => {
                     <tbody>
                         {
                             pur.map((p, index) =>
-                                <tr key={pur._id}>
+                                <tr>
                                     <th>{index + 1}</th>
                                     <td>{p.productName}</td>
                                     <td>{p.productQuantity}</td>
@@ -43,7 +61,6 @@ const MyOrders = () => {
                                     <td>{p.buyerAddress}</td>
                                 </tr>)
                         }
-
                     </tbody>
                 </table>
             </div>
