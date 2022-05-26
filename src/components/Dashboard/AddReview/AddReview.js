@@ -9,7 +9,7 @@ const AddReview = () => {
                 name: data.name,
                 img: data.img,
                 about: data.about,
-                rating: parseInt(data.rating)
+                rating: parseFloat(data.rating)
             }
             fetch('http://localhost:5000/reviews', {
                 method: 'POST',
