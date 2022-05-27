@@ -19,11 +19,11 @@ const Dashboard = () => {
                 <ul className="menu p-4 overflow-y-auto w-80 text-white bg-primary">
                     <li><Link to='/dashboard'>My Profile</Link></li>
                     {!admin && <li><Link to='/dashboard/addreview'>Add A Review</Link></li>}
-                    <li><Link to='/dashboard/myorder'>My Orders</Link></li>
+                    {!admin && <li><Link to='/dashboard/myorder'>My Orders</Link></li>}
                     {admin && <>
                         <li><Link to='/dashboard/allusers'>All Users</Link></li>
                         <li><Link to='/dashboard/manageproducts'>Manage Products</Link></li>
-                        <li><Link to='/dashboard/addatool'>Add a Tool</Link></li>
+                        <li><Link to='/dashboard/addatool'>Add Tool</Link></li>
                     </>}
                 </ul>
             </div>

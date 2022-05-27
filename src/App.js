@@ -42,7 +42,7 @@ function App() {
           <Route path='addatool' element={<RequireAdmin><AddTool></AddTool></RequireAdmin>}></Route>
           <Route path='manageproducts' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
         </Route>
-        <Route path='/instrument/:id' element={<RequireAdmin><UpdateProduct></UpdateProduct></RequireAdmin>}></Route>
+        <Route path='instrument/:id' element={<RequireAdmin><UpdateProduct></UpdateProduct></RequireAdmin>}></Route>
         <Route path='/purchase/:id' element={
           <RequireAuth><Purchase></Purchase></RequireAuth>
         }></Route>

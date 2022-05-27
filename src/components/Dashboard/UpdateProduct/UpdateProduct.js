@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const UpdateProduct = () => {
     const { id } = useParams();
@@ -17,14 +17,14 @@ const UpdateProduct = () => {
             .then(data => setProduct(data))
     }, [])
 
-    const onSubmit = data => {
+    const onSubmit = (data) => {
         const updatedProductDetails = {
             price: parseInt(data.price),
             minimum_order_quantity: parseInt(data.minimum_order_quantity),
             available_quantity: parseInt(data.available_quantity)
         }
 
-        fetch(`https://localhost:5000/tools/${id}`, {
+        fetch(`http://localhost:5000/tools/${id}`, {
             method: 'PUT',
             body: JSON.stringify(updatedProductDetails),
             headers: {
@@ -81,6 +81,7 @@ const UpdateProduct = () => {
                     <input type="submit" value='Update' className='btn btn-primary mt-4 block mx-auto text-white' />
                 </form>
             </div>
+            <ToastContainer></ToastContainer>
         </div >
     );
 };
