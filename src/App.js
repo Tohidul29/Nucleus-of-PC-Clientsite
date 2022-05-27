@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import ManageProducts from './components/Dashboard/ManageProducts/ManageProducts';
 import MyOrders from './components/Dashboard/MyOrders/MyOrders';
 import MyProfile from './components/Dashboard/MyProfile/MyProfile';
+import UpdateProduct from './components/Dashboard/UpdateProduct/UpdateProduct';
 import Home from './components/Home/Home/Home';
 import Purchase from './components/Home/Tools/Purchase/Purchase';
 import Login from './components/Login/Login';
@@ -41,6 +42,7 @@ function App() {
           <Route path='addatool' element={<RequireAdmin><AddTool></AddTool></RequireAdmin>}></Route>
           <Route path='manageproducts' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
         </Route>
+        <Route path='/instrument/:id' element={<RequireAdmin><UpdateProduct></UpdateProduct></RequireAdmin>}></Route>
         <Route path='/purchase/:id' element={
           <RequireAuth><Purchase></Purchase></RequireAuth>
         }></Route>
