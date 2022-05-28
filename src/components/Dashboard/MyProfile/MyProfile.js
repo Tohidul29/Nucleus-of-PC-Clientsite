@@ -37,7 +37,7 @@ const MyProfile = () => {
     // my profile 
     const [update, setUpdate] = useState([]);
     useEffect(() => {
-        const url = `https://enigmatic-sea-26065.herokuapp.com/users/${user.email}`;
+        const url = `https://enigmatic-sea-26065.herokuapp.com/user/${user.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setUpdate(data))
