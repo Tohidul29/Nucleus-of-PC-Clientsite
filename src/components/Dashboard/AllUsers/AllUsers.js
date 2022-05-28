@@ -7,7 +7,7 @@ const AllUsers = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch('https://enigmatic-sea-26065.herokuapp.com/user', {
+        fetch('http://localhost:5000/user', {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -16,6 +16,7 @@ const AllUsers = () => {
             .then(res => res.json())
             .then(data => setUsers(data))
     }, [])
+    console.log(users)
 
     return (
         <div>

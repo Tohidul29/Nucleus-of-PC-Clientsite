@@ -18,9 +18,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    const [sendPasswordResetEmail] = useSendPasswordResetEmail(
-        auth
-    );
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
     const navigate = useNavigate();
 
