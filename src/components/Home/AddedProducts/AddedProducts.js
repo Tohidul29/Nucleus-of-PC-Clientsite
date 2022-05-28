@@ -6,7 +6,7 @@ import Loading from '../../Shared/Loading/Loading';
 import Product from './Product';
 
 const AddedProducts = () => {
-    const { data, isLoading } = useQuery('addedProducts', () => fetch('http://localhost:5000/tools').then(res => res.json()));
+    const { data, isLoading } = useQuery('addedProducts', () => fetch('https://enigmatic-sea-26065.herokuapp.com/tools').then(res => res.json()));
 
     if (isLoading) {
         return <Loading></Loading>

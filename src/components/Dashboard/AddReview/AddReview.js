@@ -11,7 +11,7 @@ const AddReview = () => {
                 about: data.about,
                 rating: parseFloat(data.rating)
             }
-            fetch('http://localhost:5000/reviews', {
+            fetch('https://enigmatic-sea-26065.herokuapp.com/reviews', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

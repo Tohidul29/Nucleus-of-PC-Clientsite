@@ -6,7 +6,7 @@ const ManageAllOrder = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/bookings')
+        fetch('https://enigmatic-sea-26065.herokuapp.com/bookings')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, []);

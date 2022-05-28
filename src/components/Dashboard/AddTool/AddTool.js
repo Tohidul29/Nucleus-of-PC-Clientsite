@@ -14,7 +14,7 @@ const AddTool = () => {
             minimum_order_quantity: parseInt(data.minimum_order_quantity),
             available_quantity: parseInt(data.available_quantity)
         }
-        fetch('http://localhost:5000/tools', {
+        fetch('https://enigmatic-sea-26065.herokuapp.com/tools', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

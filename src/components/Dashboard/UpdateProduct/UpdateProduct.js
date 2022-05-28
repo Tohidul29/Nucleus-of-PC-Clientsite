@@ -11,7 +11,7 @@ const UpdateProduct = () => {
     const { name, img, description } = product;
 
     useEffect(() => {
-        const url = `http://localhost:5000/tools/${id}`;
+        const url = `https://enigmatic-sea-26065.herokuapp.com/tools/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -24,7 +24,7 @@ const UpdateProduct = () => {
             available_quantity: parseInt(data.available_quantity)
         }
 
-        fetch(`http://localhost:5000/tools/${id}`, {
+        fetch(`https://enigmatic-sea-26065.herokuapp.com/tools/${id}`, {
             method: 'PUT',
             body: JSON.stringify(updatedProductDetails),
             headers: {

@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51L4G7EHmNqUCn9bp6aZFXxwpfH7pibuZy47pa
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `http://localhost:5000/purchase/${id}`;
+    const url = `https://enigmatic-sea-26065.herokuapp.com/purchase/${id}`;
 
     const { data: productPurchase, isLoading } = useQuery(['payment', id], () => fetch(url, {
         method: 'GET',

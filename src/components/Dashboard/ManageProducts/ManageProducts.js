@@ -16,7 +16,7 @@ const ManageProducts = () => {
     const handleProductDelete = id => {
         const confirm = window.confirm('Are you sure to Delete this product?');
         if (confirm) {
-            const url = `http://localhost:5000/tools/${id}`;
+            const url = `https://enigmatic-sea-26065.herokuapp.com/tools/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

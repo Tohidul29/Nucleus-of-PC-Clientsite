@@ -6,7 +6,7 @@ import Loading from '../Shared/Loading/Loading';
 import Review from './Review';
 
 const UserReview = () => {
-    const {data, isLoading} = useQuery('allReviews', ()=> fetch('http://localhost:5000/reviews').then(res => res.json()));
+    const {data, isLoading} = useQuery('allReviews', ()=> fetch('https://enigmatic-sea-26065.herokuapp.com/reviews').then(res => res.json()));
 
     if(isLoading){
         return <Loading></Loading>

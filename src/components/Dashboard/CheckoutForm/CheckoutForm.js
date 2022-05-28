@@ -13,7 +13,7 @@ const CheckoutForm = ({ productPurchase }) => {
     const { _id, productCost, buyerName, buyerEmail } = productPurchase;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://enigmatic-sea-26065.herokuapp.com/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -79,7 +79,7 @@ const CheckoutForm = ({ productPurchase }) => {
                 pay: _id,
                 transectionId: paymentIntent.id
             }
-            fetch(`http://localhost:5000/purchase/${_id}`, {
+            fetch(`https://enigmatic-sea-26065.herokuapp.com/purchase/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
