@@ -11,6 +11,7 @@ const MyOrders = () => {
 
     const navigate = useNavigate();
 
+    //load data:
     useEffect(() => {
         if (user) {
             fetch(`https://enigmatic-sea-26065.herokuapp.com/purchase?buyerEmail=${user.email}`, {
