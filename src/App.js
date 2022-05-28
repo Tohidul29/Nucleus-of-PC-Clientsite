@@ -5,9 +5,11 @@ import AddReview from './components/Dashboard/AddReview/AddReview';
 import AddTool from './components/Dashboard/AddTool/AddTool';
 import AllUsers from './components/Dashboard/AllUsers/AllUsers';
 import Dashboard from './components/Dashboard/Dashboard';
+import ManageAllOrder from './components/Dashboard/ManageAllOrder/ManageAllOrder';
 import ManageProducts from './components/Dashboard/ManageProducts/ManageProducts';
 import MyOrders from './components/Dashboard/MyOrders/MyOrders';
 import MyProfile from './components/Dashboard/MyProfile/MyProfile';
+import Payment from './components/Dashboard/Payment/Payment';
 import UpdateProduct from './components/Dashboard/UpdateProduct/UpdateProduct';
 import Home from './components/Home/Home/Home';
 import Purchase from './components/Home/Tools/Purchase/Purchase';
@@ -38,9 +40,11 @@ function App() {
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='addreview' element={<AddReview></AddReview>}></Route>
           <Route path='myorder' element={<MyOrders></MyOrders>}></Route>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
           <Route path='allusers' element={<RequireAdmin><AllUsers></AllUsers></RequireAdmin>}></Route>
           <Route path='addatool' element={<RequireAdmin><AddTool></AddTool></RequireAdmin>}></Route>
           <Route path='manageproducts' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
+          <Route path='manageallorders' element={<RequireAdmin><ManageAllOrder></ManageAllOrder></RequireAdmin>}></Route>
         </Route>
         <Route path='instrument/:id' element={<RequireAdmin><UpdateProduct></UpdateProduct></RequireAdmin>}></Route>
         <Route path='/purchase/:id' element={
