@@ -32,4 +32,4 @@ I am trying to make a website about a warehouse named Apple-Mania, where I am tr
 
 * express.js (backend related)
 
-* Node.js (backend related)
+* Node.js
