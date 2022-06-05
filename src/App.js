@@ -1,3 +1,4 @@
+//modules:
 import { Route, Routes } from 'react-router-dom';
 import AllProducts from './components/AllProducts/AllProducts';
 import Blogs from './components/Blogs/Blogs';
